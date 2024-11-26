@@ -1,6 +1,7 @@
 package it.unibo.mvc;
 
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
      * @param views
      *            the views to attach
      */
-    public DrawNumberApp(final DrawNumberView... views) {
+    public DrawNumberApp(final Configuration conf, final DrawNumberView... views) {
         /*
          * Side-effect proof
          */
@@ -27,7 +28,7 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
             view.setObserver(this);
             view.start();
         }
-        this.model = new DrawNumberImpl(MIN, MAX, ATTEMPTS);
+        this.model = new DrawNumberImpl(conf);
     }
 
     @Override
@@ -66,7 +67,8 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
      * @throws FileNotFoundException 
      */
     public static void main(final String... args) throws FileNotFoundException {
-        new DrawNumberApp(new DrawNumberViewImpl());
+        try(PrintStream ps = new PrintStream(new File("")));
+        new DrawNumberApp(Configuration.Builder.setAttempts(10).setMax(100).setMin(20).build(), new DrawNumberViewImpl(), new PrintStreamView(null));
     }
 
 }

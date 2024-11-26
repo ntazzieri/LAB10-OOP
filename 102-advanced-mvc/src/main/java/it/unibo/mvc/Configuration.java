@@ -44,6 +44,7 @@ public final class Configuration {
         return attempts > 0 && min < max;
     }
 
+    
     /**
      * Pattern builder: used here because:
      * 
@@ -61,6 +62,7 @@ public final class Configuration {
      * the builder, we emulate the so-called "named arguments".
      * 
      */
+    
     public static class Builder {
 
         private static final int MIN = 0;
@@ -110,5 +112,6 @@ public final class Configuration {
             return new Configuration(max, min, attempts);
         }
     }
+    
 }
 
