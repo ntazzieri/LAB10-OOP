@@ -15,9 +15,10 @@ public final class DrawNumberImpl implements DrawNumber {
     private final Random random = new Random();
 
     /**
+     * @param conf configuration to use
      * @throws IllegalStateException if the configuration is not consistent
      */
-    public DrawNumberImpl(Configuration conf) {
+    public DrawNumberImpl(final Configuration conf) {
         this.min = conf.getMin();
         this.max = conf.getMax();
         this.attempts = conf.getAttempts();

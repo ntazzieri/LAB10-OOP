@@ -43,8 +43,6 @@ public final class Configuration {
     public boolean isConsistent() {
         return attempts > 0 && min < max;
     }
-
-    
     /**
      * Pattern builder: used here because:
      * 
@@ -62,7 +60,6 @@ public final class Configuration {
      * the builder, we emulate the so-called "named arguments".
      * 
      */
-    
     public static class Builder {
 
         private static final int MIN = 0;
@@ -72,33 +69,33 @@ public final class Configuration {
         private int min = MIN;
         private int max = MAX;
         private int attempts = ATTEMPTS;
-        private boolean consumed = false;
+        private boolean consumed;
 
         /**
          * @param min the minimum value
          * @return this builder, for method chaining
          */
-        public Builder setMin(final int min) {
+        public Builder setMin(final int min) { // NOPMD: used to allow method chaining
             this.min = min;
-            return this;
+            return this; 
         }
 
         /**
          * @param max the maximum value
          * @return this builder, for method chaining
          */
-        public Builder setMax(final int max) {
+        public Builder setMax(final int max) { // NOPMD: used to allow method chaining
             this.max = max;
-            return this;
+            return this; 
         }
 
         /**
          * @param attempts the attempts count
          * @return this builder, for method chaining
          */
-        public Builder setAttempts(final int attempts) {
+        public Builder setAttempts(final int attempts) { // NOPMD: used to allow method chaining
             this.attempts = attempts;
-            return this;
+            return this; 
         }
 
         /**
@@ -112,6 +109,5 @@ public final class Configuration {
             return new Configuration(max, min, attempts);
         }
     }
-    
 }
 
